@@ -9,7 +9,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 	"github.com/Xieyangxinyu/380D/common"
-	"github.com/Xieyangxinyu/380D/secp256k1"
+	"github.com/torusresearch/pvss/secp256k1"
 )
 
 type nodeList struct {

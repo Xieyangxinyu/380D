@@ -10,7 +10,7 @@ import (
 	"math/big"
 
 	"github.com/Xieyangxinyu/380D/common"
-	"github.com/Xieyangxinyu/380D/secp256k1"
+	"github.com/torusresearch/pvss/secp256k1"
 )
 
 func RandomBigInt() *big.Int {
