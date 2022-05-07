@@ -40,4 +40,5 @@ type Hash struct {
 type Node struct {
 	Index  int
 	PubKey Point
+	Fail   bool
 }

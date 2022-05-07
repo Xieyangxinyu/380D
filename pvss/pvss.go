@@ -9,8 +9,8 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/torusresearch/pvss/common"
-	"github.com/torusresearch/pvss/secp256k1"
+	"github.com/Xieyangxinyu/380D/common"
+	"github.com/Xieyangxinyu/380D/secp256k1"
 )
 
 func RandomBigInt() *big.Int {
@@ -321,4 +321,40 @@ func LagrangeScalar(shares []common.PrimaryShare, target int) *big.Int {
 	secret.Mod(secret, secp256k1.GeneratorOrder)
 	// secret.Mod(secret, secp256k1.GeneratorOrder)
 	return secret
+}
+
+func Recover(shares []common.PrimaryShare, target int) []*big.Int {
+	deltas := make([]*big.Int, len(shares))
+	for i, share := range shares {
+		//when x =0
+		delta := new(big.Int).SetInt64(int64(1))
+		upper := new(big.Int).SetInt64(int64(1))
+		lower := new(big.Int).SetInt64(int64(1))
+		for j := range shares {
+			if shares[j].Index != share.Index {
+				tempUpper := big.NewInt(int64(target))
+				tempUpper.Sub(tempUpper, big.NewInt(int64(shares[j].Index)))
+				upper.Mul(upper, tempUpper)
+				upper.Mod(upper, secp256k1.GeneratorOrder)
+
+				tempLower := big.NewInt(int64(share.Index))
+				tempLower.Sub(tempLower, big.NewInt(int64(shares[j].Index)))
+				tempLower.Mod(tempLower, secp256k1.GeneratorOrder)
+
+				lower.Mul(lower, tempLower)
+				lower.Mod(lower, secp256k1.GeneratorOrder)
+			}
+		}
+		//elliptic devision
+		inv := new(big.Int)
+		inv.ModInverse(lower, secp256k1.GeneratorOrder)
+		delta.Mul(upper, inv)
+		delta.Mod(delta, secp256k1.GeneratorOrder)
+
+		delta.Mul(&share.Value, delta)
+		delta.Mod(delta, secp256k1.GeneratorOrder)
+		
+		deltas[i] = delta
+	}
+	return deltas
 }
