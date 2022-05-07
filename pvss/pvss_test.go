@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/Xieyangxinyu/380D/common"
+	"github.com/torusresearch/pvss/common"
 	"github.com/torusresearch/pvss/secp256k1"
 )
 
@@ -24,7 +24,6 @@ func createRandomNodes(number int) (*nodeList, []big.Int) {
 		list.Nodes = append(list.Nodes, common.Node{
 			i + 1,
 			common.BigIntToPoint(secp256k1.Curve.ScalarBaseMult(pkey.Bytes())),
-			false,
 		})
 		privateKeys[i] = *pkey
 	}
@@ -36,7 +35,7 @@ func TestBeacon(test *testing.T) {
 	// Set the number of nodes in the distributed network
 	numberOfNodes := 64
 	threshold := numberOfNodes/2 + 1
-	time_threshold := 72.0
+	time_threshold := 74.0
 	exp_mean := float64(numberOfNodes)
 
 	// Set up

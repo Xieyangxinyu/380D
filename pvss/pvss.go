@@ -9,7 +9,7 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/Xieyangxinyu/380D/common"
+	"github.com/torusresearch/pvss/common"
 	"github.com/torusresearch/pvss/secp256k1"
 )
 
