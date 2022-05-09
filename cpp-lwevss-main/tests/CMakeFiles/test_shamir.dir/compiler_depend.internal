@@ -3,7 +3,6 @@
 
 tests/CMakeFiles/test_shamir.dir/test_shamir.cpp.o
  /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/tests/test_shamir.cpp
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/tests/test_shamir.cpp
  /Library/Developer/CommandLineTools/usr/include/c++/v1/iostream
  /Library/Developer/CommandLineTools/usr/include/c++/v1/__config
  /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/include/pthread.h
@@ -226,69 +225,69 @@ tests/CMakeFiles/test_shamir.dir/test_shamir.cpp.o
  /Library/Developer/CommandLineTools/usr/include/c++/v1/__bsd_locale_defaults.h
  /Library/Developer/CommandLineTools/usr/include/c++/v1/bitset
  /Library/Developer/CommandLineTools/usr/include/c++/v1/__bit_reference
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/shamir.hpp
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/shamir.hpp
  /Library/Developer/CommandLineTools/usr/include/c++/v1/set
  /Library/Developer/CommandLineTools/usr/include/c++/v1/__tree
  /Library/Developer/CommandLineTools/usr/include/c++/v1/__node_handle
  /Library/Developer/CommandLineTools/usr/include/c++/v1/optional
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/algebra.hpp
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/ZZ.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/lip.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/ctools.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/config.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/mach_desc.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/ALL_FEATURES.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/HAVE_ALIGNED_ARRAY.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/HAVE_BUILTIN_CLZL.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/HAVE_LL_TYPE.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/HAVE_SSSE3.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/HAVE_AVX.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/HAVE_PCLMUL.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/HAVE_AVX2.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/HAVE_FMA.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/HAVE_AVX512F.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/HAVE_COPY_TRAITS1.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/HAVE_COPY_TRAITS2.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/HAVE_CHRONO_TIME.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/HAVE_MACOS_TIME.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/HAVE_POSIX_TIME.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/HAVE_AES_NI.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/HAVE_KMA.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/PackageInfo.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/gmp_aux.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/tools.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/new.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/algebra.hpp
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/ZZ.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/lip.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/ctools.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/config.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/mach_desc.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/ALL_FEATURES.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/HAVE_ALIGNED_ARRAY.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/HAVE_BUILTIN_CLZL.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/HAVE_LL_TYPE.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/HAVE_SSSE3.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/HAVE_AVX.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/HAVE_PCLMUL.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/HAVE_AVX2.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/HAVE_FMA.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/HAVE_AVX512F.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/HAVE_COPY_TRAITS1.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/HAVE_COPY_TRAITS2.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/HAVE_CHRONO_TIME.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/HAVE_MACOS_TIME.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/HAVE_POSIX_TIME.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/HAVE_AES_NI.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/HAVE_KMA.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/PackageInfo.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/gmp_aux.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/tools.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/new.h
  /Library/Developer/CommandLineTools/usr/include/c++/v1/cmath
  /Library/Developer/CommandLineTools/usr/include/c++/v1/math.h
  /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/include/math.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/vector.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/SmartPtr.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/thread.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/sp_arith.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/mat_ZZ.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/matrix.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/vec_vec_ZZ.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/vec_ZZ.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/mat_lzz_p.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/vec_vec_lzz_p.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/vec_lzz_p.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/lzz_p.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/FFT.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/vec_long.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/LazyTable.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/mat_ZZ_p.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/vec_vec_ZZ_p.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/vec_ZZ_p.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/ZZ_p.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/ZZVec.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/Lazy.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/mat_ZZ_pE.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/vec_vec_ZZ_pE.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/vec_ZZ_pE.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/ZZ_pE.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/ZZ_pX.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/RR.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/xdouble.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/NTL/quad_float.h
- /Users/jiahuiliu/Dropbox/UTcourses/Spring2022/distributed/project-related/cpp-lwevss-main-MODIFIED/include/tests.hpp
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/vector.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/SmartPtr.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/thread.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/sp_arith.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/mat_ZZ.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/matrix.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/vec_vec_ZZ.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/vec_ZZ.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/mat_lzz_p.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/vec_vec_lzz_p.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/vec_lzz_p.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/lzz_p.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/FFT.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/vec_long.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/LazyTable.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/mat_ZZ_p.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/vec_vec_ZZ_p.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/vec_ZZ_p.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/ZZ_p.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/ZZVec.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/Lazy.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/mat_ZZ_pE.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/vec_vec_ZZ_pE.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/vec_ZZ_pE.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/ZZ_pE.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/ZZ_pX.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/RR.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/xdouble.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/NTL/quad_float.h
+ /Users/jiahuiliu/Dropbox/PVSS/380D/cpp-lwevss-main/include/tests.hpp
 

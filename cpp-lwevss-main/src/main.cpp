@@ -151,8 +151,6 @@ int main(int argc, char** argv) {
     // choose a random party as the public verifier
     
     partyIdx = rand()%(nParties);
-    
-    //std::cout << "gpk.enn value:"<<gpk.enn<<"\n";
 
 
     std::cout << "Decryption at partyIdx: " << partyIdx <<"\n";
@@ -172,7 +170,7 @@ int main(int argc, char** argv) {
 
         //std::cout << "plaintext " <<i << " :" << ptxt2[i]<<"\n" ;
          myfile << "plaintext " <<i << " :" << ptxt2[i]<<"\n" ;
-        //std::cout << "Plaintext length:" <<"\n";
+        
         if (ptxt2[i] != ptxt1[i][partyIdx])
                     std::cout << "decryption error in "<<i<<"th ciphertext\n";          
     }
