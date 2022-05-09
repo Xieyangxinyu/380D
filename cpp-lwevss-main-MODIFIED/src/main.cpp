@@ -122,9 +122,7 @@ int main(int argc, char** argv) {
    
 
     //Decrypting all parties 
-    //gpk.tee = gpk.enn;
-
-    //rand()%(nParties) + 1;
+   
 
     std::cout << "Decryption parties:"<<gpk.tee<<"\n";
 
@@ -151,16 +149,11 @@ int main(int argc, char** argv) {
 
     //verified by one party
     // choose a random party as the public verifier
-    //who can be possibly adversarial
+    
     partyIdx = rand()%(nParties);
     
     //std::cout << "gpk.enn value:"<<gpk.enn<<"\n";
 
-
-    // how many decryptions are we performing?
-    //std::cout << "gpk.tee value:"<<gpk.tee<<"\n";
-
-   
 
     std::cout << "Decryption at partyIdx: " << partyIdx <<"\n";
 
