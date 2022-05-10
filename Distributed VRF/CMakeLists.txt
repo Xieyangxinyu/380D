@@ -40,6 +40,9 @@ find_package_handle_standard_args(GMP DEFAULT_MSG GMP_INCLUDES GMP_LIBRARIES)
 
 find_package(Threads REQUIRED)
 find_package(Protobuf REQUIRED)
+
+include_directories(${PROTOBUF_INCLUDE_DIR})
+
 include(GNUInstallDirs)
 
 # find openssl 

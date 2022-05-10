@@ -2,6 +2,9 @@ import hashlib
 import binascii
 import operator
 import math
+import random
+import numpy as np
+
 import sys
 from sys import argv
 from cryptography.hazmat.backends import default_backend
@@ -134,7 +137,7 @@ def VRF_verifying(public_key, alpha, pi, k):
     m = public_key.rsavp1(s)
     EM = i2osp(m, k-1)
     EM_ = mgf1(alpha, k-1)
-    print("Evaluation:",s)
+    #print("Evaluation:", os2ip(EM_))
 
     if EM == EM_:
         return "VALID"
@@ -157,12 +160,53 @@ if __name__ == "__main__":
     e = public_numbers.e
     d = private_numbers.d
     k = 20
+
+    party_size = 10
+    epoch_number = 30
+
+
+    initial_distr = np.random.normal(5, 1, party_size)
+
+    print(initial_distr)
+
+    total_stake = 0
+
+    for i in range(len(initial_distr)):
+         total_stake += initial_distr[i]
+
+    print("Current total stake:", total_stake)
+
+
+    
     public_key = RsaPublicKey(n, e)
     private_key = RsaPrivateKey(n, d)
-    alpha = " ".join(argv[1:])
-    pi = VRF_prove(private_key, alpha, k)
-    beta = VRF_proof2hash(pi)
-    #print("Evaluation:", beta)
 
-    print(VRF_verifying(public_key, alpha, pi, k))
+    alpha = " ".join(argv[1:])
+
+    
+    for epoch in range(epoch_number):
+
+        print("Epoch number:", epoch)
+
+        pi = VRF_prove(private_key, alpha, k)
+
+        beta = VRF_proof2hash(pi)
+
+        beta_val = os2ip(beta)
+        print("Evaluation:", beta_val)
+        print("Random str Length:", len(str(beta_val)))
+
+        print(VRF_verifying(public_key, alpha, pi, k))
+
+        beacon = int(str(beta_val)[0:30])
+
+        print("Beacon for leader selection:", beacon)
+
+        random.seed(beacon)
+
+        alpha = str(beta_val)[30:]
+        print("Beacon for next round:", alpha)
+
+
+
     
