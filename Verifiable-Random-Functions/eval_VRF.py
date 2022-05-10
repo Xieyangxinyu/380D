@@ -5,6 +5,9 @@ import math
 import random
 import numpy as np
 
+import matplotlib.pyplot as plt
+import seaborn as sns
+
 import sys
 from sys import argv
 from cryptography.hazmat.backends import default_backend
@@ -162,12 +165,16 @@ if __name__ == "__main__":
     k = 20
 
     party_size = 10
-    epoch_number = 30
+    epoch_number = 10
 
 
     initial_distr = np.random.normal(5, 1, party_size)
 
-    print(initial_distr)
+    stakeholders = list(range(1, party_size+1))
+
+    print("stakeholders:", stakeholders)
+
+    print("initial_distr: ",initial_distr)
 
     total_stake = 0
 
@@ -175,6 +182,14 @@ if __name__ == "__main__":
          total_stake += initial_distr[i]
 
     print("Current total stake:", total_stake)
+
+    plt.plot(stakeholders, initial_distr)
+
+    plt.title('Initial Distribution of Stakes')
+    plt.xlabel('Participant')
+    plt.ylabel('Stakes')
+
+    plt.savefig("initial.jpg")
 
 
     
@@ -186,6 +201,8 @@ if __name__ == "__main__":
     
     for epoch in range(epoch_number):
 
+        final_distr = initial_distr
+
         print("Epoch number:", epoch)
 
         pi = VRF_prove(private_key, alpha, k)
@@ -194,19 +211,34 @@ if __name__ == "__main__":
 
         beta_val = os2ip(beta)
         print("Evaluation:", beta_val)
-        print("Random str Length:", len(str(beta_val)))
+        #print("Random str Length:", len(str(beta_val)))
 
         print(VRF_verifying(public_key, alpha, pi, k))
 
         beacon = int(str(beta_val)[0:30])
 
-        print("Beacon for leader selection:", beacon)
+        #print("Beacon for leader selection:", beacon)
 
         random.seed(beacon)
 
+        leader = random.choices(stakeholders, weights= final_distr, k =1)
+
+        print("Leader for epoch ", epoch, ":", leader)
+
+        final_distr[leader[0]-1] += 0.5
+
+        print("Stake distribution after epoch ", epoch, ": ", final_distr)
+
         alpha = str(beta_val)[30:]
-        print("Beacon for next round:", alpha)
+        #print("Beacon for next round:", alpha)
 
 
+    #plt.hist(final_distr, color = 'blue', edgecolor = 'black',bins = party_size)
+    plt.plot(stakeholders, final_distr)
 
+    plt.title('Final Distribution of Stakes')
+    plt.xlabel('Participant')
+    plt.ylabel('Stakes')
+
+    plt.savefig("output.jpg")
     
