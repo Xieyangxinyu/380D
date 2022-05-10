@@ -178,10 +178,10 @@ if __name__ == "__main__":
 
     total_stake = 0
 
-    for i in range(len(initial_distr)):
-         total_stake += initial_distr[i]
+   # for i in range(len(initial_distr)):
+   #      total_stake += initial_distr[i]
 
-    print("Current total stake:", total_stake)
+    #print("Current total stake:", total_stake)
 
     plt.plot(stakeholders, initial_distr)
 
@@ -210,7 +210,7 @@ if __name__ == "__main__":
         beta = VRF_proof2hash(pi)
 
         beta_val = os2ip(beta)
-        print("Evaluation:", beta_val)
+        #print("Evaluation:", beta_val)
         #print("Random str Length:", len(str(beta_val)))
 
         print(VRF_verifying(public_key, alpha, pi, k))
@@ -225,7 +225,7 @@ if __name__ == "__main__":
 
         print("Leader for epoch ", epoch, ":", leader)
 
-        final_distr[leader[0]-1] += 0.5
+        final_distr[leader[0]-1] += 0.1
 
         print("Stake distribution after epoch ", epoch, ": ", final_distr)
 
