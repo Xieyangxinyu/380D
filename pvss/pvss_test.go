@@ -3,7 +3,7 @@ package pvss
 import (
 	"fmt"
 	"math/big"
-	"math/rand"
+	"os"
 	"testing"
 	"time"
 
@@ -33,26 +33,25 @@ func createRandomNodes(number int) (*nodeList, []big.Int) {
 func TestBeacon(test *testing.T) {
 
 	// Set the number of nodes in the distributed network
-	numberOfNodes := 64
+	numberOfNodes := 512
 	threshold := numberOfNodes/2 + 1
-	time_threshold := 74.0
-	exp_mean := float64(numberOfNodes)
+	time_threshold := 700.0
 
 	// Set up
 	// type Node struct {
-    // Index  int
+	// Index  int
 	// PubKey Point
-    //}
+	//}
 	nodeList, privateKeys := createRandomNodes(numberOfNodes)
-	
+
 	secrets := make([]big.Int, len(nodeList.Nodes))
 	secret := new(big.Int)
-	for i:= range secrets{
+	for i := range secrets {
 		secrets[i] = *RandomBigInt()
 		secret.Add(secret, &secrets[i])
 	}
 	secret.Mod(secret, secp256k1.GeneratorOrder)
-	
+
 	// Commitment Phase
 	errorsExist := false
 	allSigncryptedShares := make([][]*common.SigncryptedOutput, len(nodeList.Nodes))
@@ -60,7 +59,7 @@ func TestBeacon(test *testing.T) {
 
 	failed_nodes := 0
 	waiting_time := make([]float64, len(nodeList.Nodes))
-	
+
 	for i := range nodeList.Nodes {
 		// Deal
 		t1 := time.Now()
@@ -73,12 +72,12 @@ func TestBeacon(test *testing.T) {
 		}
 		t2 := time.Now()
 		diff := t2.Sub(t1)
-		waiting_time[i] = rand.ExpFloat64() * exp_mean + diff.Seconds() * 1000
+		waiting_time[i] = diff.Seconds() * 1000
 	}
 
 	// Reveal Phase
 	allDecryptedShares := make([][]big.Int, len(nodeList.Nodes))
-	
+
 	for i := range nodeList.Nodes {
 		// Decrypt and Verify
 		// Verify is within the UnsigncryptShare function
@@ -100,11 +99,10 @@ func TestBeacon(test *testing.T) {
 		waiting_time[i] += diff.Seconds() * 1000
 	}
 
-
 	// Recover
 	//form si, points on the polynomial f(z) = r + a1z + a2z^2....
 	allSi := make([]common.PrimaryShare, len(nodeList.Nodes))
-	
+
 	for i := range nodeList.Nodes {
 		sum := new(big.Int)
 		for j := range nodeList.Nodes {
@@ -112,24 +110,33 @@ func TestBeacon(test *testing.T) {
 		}
 		sum.Mod(sum, secp256k1.GeneratorOrder)
 		allSi[i] = common.PrimaryShare{i + 1, *sum}
-		if waiting_time[i] > time_threshold{
+		if waiting_time[i] > time_threshold {
 			failed_nodes += 1
 		}
 	}
+	f, err := os.Create("waiting_time")
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	for i := range waiting_time {
+		fmt.Fprintf(f, "%.*e, ", 5, waiting_time[i])
+	}
+	f.Close()
+	fmt.Println(waiting_time)
 
 	// For simplicity, we assume the last few nodes are the failed nodes
-	deltas := Recover(allSi[:numberOfNodes - failed_nodes], 0)
-	
+	deltas := Recover(allSi[:numberOfNodes-failed_nodes], 0)
+
 	testr := new(big.Int)
-	
-	for i := range deltas{
+
+	for i := range deltas {
 		testr.Add(testr, deltas[i])
 	}
 	testr.Mod(testr, secp256k1.GeneratorOrder)
 
 	fmt.Printf("%d nodes failed!\n", failed_nodes)
 	assert.True(test, testr.Cmp(secret) == 0)
-
 
 	assert.False(test, errorsExist)
 }
