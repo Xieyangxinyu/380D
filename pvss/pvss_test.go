@@ -82,7 +82,6 @@ func TestBeacon(test *testing.T) {
 		// Decrypt and Verify
 		// Verify is within the UnsigncryptShare function
 
-		t1 := time.Now()
 		arrDecryptShares := make([]big.Int, len(nodeList.Nodes))
 		for j := range nodeList.Nodes {
 			decryptedShare, err := UnsigncryptShare(allSigncryptedShares[j][i].SigncryptedShare, privateKeys[i], nodeList.Nodes[j].PubKey)
@@ -94,9 +93,6 @@ func TestBeacon(test *testing.T) {
 			arrDecryptShares[j] = *temp
 		}
 		allDecryptedShares[i] = arrDecryptShares
-		t2 := time.Now()
-		diff := t2.Sub(t1)
-		waiting_time[i] += diff.Seconds() * 1000
 	}
 
 	// Recover
