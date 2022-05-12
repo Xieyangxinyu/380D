@@ -76,11 +76,11 @@ int main(int argc, char** argv) {
     // matrix over GF(p^2) so the lattice dimensions we get is twice that
     
     //Each party plays as dealer once
-    for (int dealer = 0; dealer < nParties; dealer++)      
-    {
+    //for (int dealer = 0; dealer < nParties; dealer++)      
+    //{
     
-        std::cout <<"Current Dealer is Party #: " << dealer <<  "\n";
-        myfile <<"Current Dealer is Party #: " << dealer <<  "\n";
+ //  std::cout <<"Current Dealer is Party #: " << dealer <<  "\n";
+    // myfile <<"Current Dealer is Party #: " << dealer <<  "\n";
 
     KeyParams kp(nParties);
     // kp.k=64;
@@ -108,15 +108,37 @@ int main(int argc, char** argv) {
     std::vector<ALGEBRA::EVector> pk(gpk.enn);
     auto start = chrono::steady_clock::now();
     crsTicks = 0;
+
+    int keygen_times [gpk.enn];
+
     for (int i=0; i<gpk.enn; i++) {
+        auto start_i = chrono::steady_clock::now();
+        
         std::tie(sk[i],pk[i]) = gpk.genKeys(&kgNoise[i]);
         gpk.addPK(pk[i]);
+        auto end_i = chrono::steady_clock::now();
+
+        auto ticks_i = chrono::duration_cast<chrono::milliseconds>(end_i - start_i).count();
+        //std::cout <<"encryption in "<<ticks_i<<" milliseconds \n";
+        keygen_times[i] = ticks_i;
     }
+
     gpk.setKeyHash();
     auto end = chrono::steady_clock::now();
     auto ticks = chrono::duration_cast<chrono::milliseconds>(end - start).count();
     std::cout <<gpk.enn<<" keyGens in "<<ticks<<" milliseconds, avg="<<(ticks/double(gpk.enn))
         << " ("<< (crsTicks/double(gpk.enn)) << " for s x A)\n";
+
+    std::cout <<"Keygen times after sorting\n";
+
+    sort(keygen_times, keygen_times+gpk.enn);
+
+     std::cout <<"Median keygen in "<<keygen_times[gpk.enn/2]<<" milliseconds \n";
+
+    //for (int i = 0; i<gpk.enn; i++){
+     //   std::cout <<"Keygen in "<<keygen_times[i]<<" milliseconds \n";
+    //}
+
 
     std::cout << "Encrypting parties:"<<gpk.enn<<"\n";
    
@@ -139,13 +161,37 @@ int main(int argc, char** argv) {
     }
     start = chrono::steady_clock::now();
     crsTicks = 0;
+
+    int enc_times [gpk.enn];
+
     for (int i=0; i<gpk.enn; i++) {
+        auto start_i = chrono::steady_clock::now();
         ctxt1[i] = gpk.encrypt(ptxt1[i]);
+        auto end_i = chrono::steady_clock::now();
+        auto ticks_i = chrono::duration_cast<chrono::milliseconds>(end_i - start_i).count();
+        //std::cout <<"encryption in "<<ticks_i<<" milliseconds \n";
+        enc_times[i] = ticks_i;
     }
+
     end = chrono::steady_clock::now();
     ticks = chrono::duration_cast<chrono::milliseconds>(end - start).count();
     std::cout <<gpk.enn<<" encryptions in "<<ticks<<" milliseconds, avg="<<(ticks/double(gpk.enn)) 
         << " ("<< (crsTicks/double(gpk.enn)) << " for A x r)\n";
+
+    std::cout <<"Encryption times after sorting\n";
+
+    sort(enc_times, enc_times+gpk.enn);
+
+    std::cout <<"Median encryption in "<<enc_times[gpk.enn/2]<<" milliseconds \n";
+
+    //for (int i = 0; i<gpk.enn; i++){
+    //    std::cout <<"encryption in "<<enc_times[i]<<" milliseconds \n";
+    //}
+
+
+    
+
+
 
     //verified by one party
     // choose a random party as the public verifier
@@ -333,7 +379,7 @@ int main(int argc, char** argv) {
     std::cout << " max mem: " << ru.ru_maxrss << " kilobytes\n";
     
 
- }
+  //}
   myfile.close();
 
    

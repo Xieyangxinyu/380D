@@ -4,6 +4,7 @@ import operator
 import math
 import random
 import numpy as np
+import time
 
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -152,20 +153,37 @@ if __name__ == "__main__":
     if len(argv) < 2:
         print ("USAGE: python RSA_VRF.py [alpha]")
         exit(1)
+
+    time_before_keygen = time.perf_counter()
+
     private_key = rsa.generate_private_key(
         public_exponent=65537,
-        key_size=2048,
+        key_size= 1024,
         backend=default_backend())
+
     private_numbers = private_key.private_numbers()
     public_key = private_key.public_key()
     public_numbers = public_key.public_numbers()
+
+    time_after_keygen = time.perf_counter()
+    print("Time for RSA key generation:", (time_after_keygen - time_before_keygen)*1000, " miliseconds")
+
+
+    total_keygen_time = 0
+    total_proof_time = 0
+    total_verify_time = 0
+
+    initial_keygen_time = (time_after_keygen - time_before_keygen)*1000
+
+
     n = public_numbers.n
     e = public_numbers.e
     d = private_numbers.d
-    k = 20
+    k = 30
 
-    party_size = 10
-    epoch_number = 10
+    party_size = 30
+    epoch_number = 100
+
 
 
     initial_distr = np.random.normal(5, 1, party_size)
@@ -183,29 +201,54 @@ if __name__ == "__main__":
 
     #print("Current total stake:", total_stake)
 
-    plt.plot(stakeholders, initial_distr)
-
+    plt.bar(stakeholders, initial_distr)
+    plt.xticks(stakeholders, stakeholders)
     plt.title('Initial Distribution of Stakes')
     plt.xlabel('Participant')
     plt.ylabel('Stakes')
 
     plt.savefig("initial.jpg")
 
+    stake_range = list(range(1, 9))
 
+    plt.clf()
+    plt.plot(stakeholders, initial_distr, 'bo')
     
-    public_key = RsaPublicKey(n, e)
-    private_key = RsaPrivateKey(n, d)
-
+    plt.xticks(stakeholders, stakeholders)
+    plt.yticks(stake_range, stake_range)
+    plt.xlabel('Participant')
+    plt.ylabel('Stakes')
+    plt.savefig("initial_plot.jpg")
+   
     alpha = " ".join(argv[1:])
+
+    final_distr = initial_distr
 
     
     for epoch in range(epoch_number):
-
-        final_distr = initial_distr
-
+      
         print("Epoch number:", epoch)
 
+
+        time_before_keygen = time.perf_counter()
+        public_key = RsaPublicKey(n, e)
+        private_key = RsaPrivateKey(n, d)
+
+        time_after_keygen = time.perf_counter()
+        total_keygen_time += (time_after_keygen - time_before_keygen)*1000
+        
+        #print("Time for key generation:", (time_after_keygen - time_before_keygen)*1000, " miliseconds")
+
+
+        time_before_proof = time.perf_counter()
+
         pi = VRF_prove(private_key, alpha, k)
+
+        time_after_proof = time.perf_counter()
+        total_proof_time += (time_after_proof - time_before_proof)*1000
+
+        print("Time for proof generation:", (time_after_proof - time_before_proof)*1000, " miliseconds")
+
 
         beta = VRF_proof2hash(pi)
 
@@ -213,7 +256,17 @@ if __name__ == "__main__":
         #print("Evaluation:", beta_val)
         #print("Random str Length:", len(str(beta_val)))
 
+        time_before_verify = time.perf_counter()
+
         print(VRF_verifying(public_key, alpha, pi, k))
+
+        time_after_verify = time.perf_counter()
+
+        total_verify_time += (time_after_verify - time_before_verify)*1000
+        print("Time for verification:", (time_after_verify - time_before_verify)*1000, " miliseconds")
+
+
+
 
         beacon = int(str(beta_val)[0:30])
 
@@ -221,24 +274,56 @@ if __name__ == "__main__":
 
         random.seed(beacon)
 
-        leader = random.choices(stakeholders, weights= final_distr, k =1)
+        leaders = random.choices(stakeholders, weights= final_distr, k = 3)
 
-        print("Leader for epoch ", epoch, ":", leader)
+        print("Leader for epoch ", epoch, ":", leaders)
 
-        final_distr[leader[0]-1] += 0.1
+        for leader in leaders:
+            final_distr[leader-1] += 0.1
 
         print("Stake distribution after epoch ", epoch, ": ", final_distr)
+
+
+        #current_chain = " "
+        #for stake in final_distr:
+        #    current_chain += str(stake)
+
+        #print(current_chain)
 
         alpha = str(beta_val)[30:]
         #print("Beacon for next round:", alpha)
 
 
-    #plt.hist(final_distr, color = 'blue', edgecolor = 'black',bins = party_size)
-    plt.plot(stakeholders, final_distr)
 
+    plt.plot(stakeholders, final_distr, 'ro')
+    plt.xticks(stakeholders, stakeholders)
+    plt.yticks(stake_range, stake_range)
+    plt.xlabel('Participant')
+    plt.ylabel('Stakes')
+    plt.savefig("compare.jpg")
+
+
+    plt.clf()
+    
+
+    plt.bar(stakeholders, final_distr, color = 'orange')
+    plt.xticks(stakeholders, stakeholders)
     plt.title('Final Distribution of Stakes')
     plt.xlabel('Participant')
     plt.ylabel('Stakes')
 
     plt.savefig("output.jpg")
+    
+
+
+    #print("Initial_distr: ",initial_distr)
+    print("Final stake distribution: ", final_distr)
+
+    print("Avg keygen time:", initial_keygen_time, " miliseconds")
+    print("Avg proof time:", total_proof_time/epoch_number, " miliseconds")
+    print("Avg verify time:", total_verify_time/epoch_number, " miliseconds")
+
+
+    
+
     
