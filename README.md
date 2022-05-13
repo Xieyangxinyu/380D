@@ -11,7 +11,7 @@ To reproduce the results in Table 1 and Table 2 in our report, please run the fo
 cd Run_time_analysis
 python exp.py
 ```
->>>>>>> 4d5fb42040311fedf5f1cfe58adc436504bd4eac
+>>>>>>> 
 
 To run the C++ code on LWE PVSS:
 ```
@@ -23,7 +23,7 @@ make
 ```
 The argument is the number of parties that will take part in the protocol.
 
->>>>>>> 4d5fb42040311fedf5f1cfe58adc436504bd4eac
+>>>>>>> 
 
 To run the Python code on VRF based leader selection:
 
