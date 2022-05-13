@@ -256,6 +256,9 @@ if __name__ == "__main__":
 
         print("Time for proof generation:", (time_after_proof - time_before_proof)*1000, " miliseconds")
 
+        if (time_after_proof - time_before_proof)*1000 > 10:
+            continue
+
 
         beta = VRF_proof2hash(pi)
 
@@ -265,7 +268,9 @@ if __name__ == "__main__":
 
         time_before_verify = time.perf_counter()
 
-        print(VRF_verifying(public_key, input_val, pi, k))
+        verify_result = VRF_verifying(public_key, input_val, pi, k)
+
+        print(verify_result)
 
         time_after_verify = time.perf_counter()
 
@@ -273,7 +278,8 @@ if __name__ == "__main__":
         print("Time for verification:", (time_after_verify - time_before_verify)*1000, " miliseconds")
 
 
-
+        if verify_result == "INVALID":
+            continue
 
         beacon = int(str(beta_val)[0:30])
 
@@ -281,12 +287,17 @@ if __name__ == "__main__":
 
         random.seed(beacon)
 
-        leaders = random.choices(stakeholders, weights= final_distr, k = 3)
+        leaders = random.choices(stakeholders, weights= final_distr, k = 5)
 
         print("Leader for epoch ", epoch, ":", leaders)
 
+        #for i in range(len(final_distr)):
+            #total_stake += final_distr[i]
+
+        #print("Current total stake:", total_stake)
+
         for leader in leaders:
-            final_distr[leader-1] += 0.01
+            final_distr[leader-1] += 0.00005*total_stake
 
 
         print("Stake distribution after epoch ", epoch, ": ", final_distr)
@@ -329,7 +340,7 @@ if __name__ == "__main__":
     print("Avg proof time:", total_proof_time/epoch_number, " miliseconds")
     print("Avg verify time:", total_verify_time/epoch_number, " miliseconds")
 
-    print("Current total stake:", total_stake)
+    #print("Current total stake:", total_stake)
 
 
     
