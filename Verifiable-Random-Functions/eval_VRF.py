@@ -182,7 +182,7 @@ if __name__ == "__main__":
     k = 30
 
     party_size = 30
-    epoch_number = 100
+    epoch_number = 1000
 
 
 
@@ -196,10 +196,10 @@ if __name__ == "__main__":
 
     total_stake = 0
 
-   # for i in range(len(initial_distr)):
-   #      total_stake += initial_distr[i]
+    for i in range(len(initial_distr)):
+        total_stake += initial_distr[i]
 
-    #print("Current total stake:", total_stake)
+    print("Current total stake:", total_stake)
 
     plt.bar(stakeholders, initial_distr)
     plt.xticks(stakeholders, stakeholders)
@@ -239,10 +239,17 @@ if __name__ == "__main__":
         
         #print("Time for key generation:", (time_after_keygen - time_before_keygen)*1000, " miliseconds")
 
+        current_chain = " "
+        for stake in final_distr:
+            current_chain += str(stake)
 
         time_before_proof = time.perf_counter()
 
-        pi = VRF_prove(private_key, alpha, k)
+        time_stamp = str(epoch)
+
+        input_val = alpha+current_chain+time_stamp
+
+        pi = VRF_prove(private_key, input_val, k)
 
         time_after_proof = time.perf_counter()
         total_proof_time += (time_after_proof - time_before_proof)*1000
@@ -258,7 +265,7 @@ if __name__ == "__main__":
 
         time_before_verify = time.perf_counter()
 
-        print(VRF_verifying(public_key, alpha, pi, k))
+        print(VRF_verifying(public_key, input_val, pi, k))
 
         time_after_verify = time.perf_counter()
 
@@ -279,14 +286,13 @@ if __name__ == "__main__":
         print("Leader for epoch ", epoch, ":", leaders)
 
         for leader in leaders:
-            final_distr[leader-1] += 0.1
+            final_distr[leader-1] += 0.01
+
 
         print("Stake distribution after epoch ", epoch, ": ", final_distr)
 
 
-        #current_chain = " "
-        #for stake in final_distr:
-        #    current_chain += str(stake)
+        
 
         #print(current_chain)
 
@@ -322,6 +328,8 @@ if __name__ == "__main__":
     print("Avg keygen time:", initial_keygen_time, " miliseconds")
     print("Avg proof time:", total_proof_time/epoch_number, " miliseconds")
     print("Avg verify time:", total_verify_time/epoch_number, " miliseconds")
+
+    print("Current total stake:", total_stake)
 
 
     
